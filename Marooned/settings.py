@@ -25,7 +25,7 @@ SECRET_KEY = '7!nio2(q&u#eb4@+z8c5qth7-u_q6e_=cu811pm9^kucj($#-%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['marooned.herokuapp.com', '127.0.0.1']
 
 # Application definition
 
@@ -57,8 +57,7 @@ ROOT_URLCONF = 'Marooned.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -127,3 +126,6 @@ STATICFILES_DIRS = (
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+if os.getcwd() == '/app':
+    DEBUG = False
