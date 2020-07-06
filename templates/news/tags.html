@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    {% for tag in tag_list %}
+        <h3>{{ tag }}</h3>
+    {% endfor %}
+{% endblock %}
+
+

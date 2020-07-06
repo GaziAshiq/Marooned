@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% block title %}Marooned{% endblock %}
 {% block head %}
     <title>Home</title>
 {% endblock %}
@@ -6,4 +7,8 @@
 {% block body %}
     <h1 class="btn-danger">Home</h1>
     <p>{{ home }}</p>
+    {% for tag in tags %}
+        <h3>{{ tag.tag_name }}</h3>
+    {% endfor %}
+
 {% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ post.title }} {{ block.super }}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 card mb-4  mt-3 left  top">
+                <div class="card-body">
+                    <h1 class="text-dark text-center">{{ post.title }}</h1>
+                    <hr>
+                    <h5 class="text-center">Summary: {{ post.summary }}</h5>
+                    <hr>
+                    <p class=" text-muted text-center">Author: {{ post.author }} | Date: {{ post.created_on }} | Update on: {{ post.updated_on }}</p>
+                    <hr>
+                    <p class="text-muted text-center">Tags:
+                        {% for tag in post.tags.all %} {{ tag }}, {% endfor %}</p>
+                    <hr>
+                    <img src="{{ post.cover_photo.url }}" class="img-fluid" alt="Responsive Cover image">
+                    <hr>
+                    <p class="card-text">{{ post.content | safe }}</p>
+                </div>
+            </div>
+            {% block sidebar %} {% include 'news/sidebar.html' %} {% endblock sidebar %}
+        </div>
+    </div>
+
+{% endblock %}
