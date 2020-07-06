@@ -141,5 +141,6 @@ django_heroku.settings(locals())
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-if os.getcwd() == '/app':
-    DEBUG = False
+# For Heroku
+# if os.getcwd() == '/app':
+#     DEBUG = False
