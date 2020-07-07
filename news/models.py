@@ -22,7 +22,7 @@ class Tag(models.Model):
 class News(models.Model):
     title = models.CharField(max_length=192, unique=True)
     slug = models.SlugField(max_length=192, unique=True)
-    cover_photo = models.ImageField(upload_to='News', blank=True, null=True, height_field="avatar_height",
+    cover_photo = models.ImageField(blank=True, null=True, height_field="avatar_height",
                                     width_field="avatar_width", )
     avatar_height = models.IntegerField(blank=True, null=True, default='628')
     avatar_width = models.IntegerField(blank=True, null=True, default='1200')
