@@ -158,11 +158,6 @@ django_heroku.settings(locals())
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# # For Heroku
-# if os.getcwd() == '/app':
-#     DEBUG = False
-
-
 # S3 BUCKETS CONFIG
 AWS_ACCESS_KEY_ID = 'AKIA5LAVB4TRD4US7KVT'
 AWS_SECRET_ACCESS_KEY = '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'
@@ -175,8 +170,11 @@ AWS_DEFAULT_ACL = None
 
 if os.getcwd() == '/app':
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'  # only serve media files
-    # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage' # serve all files (media & static)
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'  # serve all files (media & static)
 
+# For Heroku
+if os.getcwd() == '/app':
+    DEBUG = False
 
 # This xml code for amazon s3. save it here, so in future i can copy from here
 '''
