@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'island.apps.IslandConfig',
     'news.apps.NewsConfig',
+    'storages',
 ]
 INSTALLED_APPS += ('django_summernote',)
 
@@ -79,10 +80,26 @@ WSGI_APPLICATION = 'Marooned.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'marooned_pg',
+        'USER': 'postgres',
+        'PASSWORD': '4556',
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
+# for Heroku database
+if os.getcwd() == '/app':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'marooned',
+            'USER': 'gaziashiq',
+            'PASSWORD': 'marooned12321',
+            'HOST': 'marooned-live.c5rvnuzoztqh.us-west-2.rds.amazonaws.com',
+            'PORT': '5432'
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -122,7 +139,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
@@ -144,3 +161,33 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # # For Heroku
 # if os.getcwd() == '/app':
 #     DEBUG = False
+
+
+# S3 BUCKETS CONFIG
+AWS_ACCESS_KEY_ID = 'AKIA5LAVB4TRD4US7KVT'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'marooned-bucket'
+
+AWS_S3_FILE_OVERWRITE = False  # By default files with the same name will overwrite each other.
+# Set AWS_S3_FILE_OVERWRITE this to False to have extra characters appended.
+
+AWS_DEFAULT_ACL = None
+
+if os.getcwd() == '/app':
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'  # only serve media files
+    # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage' # serve all files (media & static)
+
+
+# This xml code for amazon s3. save it here, so in future i can copy from here
+'''
+<?xml version="1.0" encoding="UTF-8"?>
+<CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+<CORSRule>
+    <AllowedOrigin>*</AllowedOrigin>
+    <AllowedMethod>GET</AllowedMethod>
+    <AllowedMethod>POST</AllowedMethod>
+    <AllowedMethod>PUT</AllowedMethod>
+    <AllowedHeader>*</AllowedHeader>
+</CORSRule>
+</CORSConfiguration>
+'''
