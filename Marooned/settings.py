@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'island.apps.IslandConfig',
     'news.apps.NewsConfig',
+    'users.apps.UsersConfig',
+    'crispy_forms',
     'storages',
 ]
 INSTALLED_APPS += ('django_summernote',)
@@ -79,6 +81,7 @@ WSGI_APPLICATION = 'Marooned.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# Local Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -150,9 +153,15 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+LOGIN_REDIRECT_URL = 'island:home'
+LOGIN_URL = 'user:signin'
+
 # SUMMERNOTE
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 SUMMERNOTE_THEME = 'bs4'
+
+# Crispy forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())

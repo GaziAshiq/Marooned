@@ -239,3 +239,7 @@ dmypy.json
 cython_debug/
 
 /.idea/
+media/django-summernote/
+media/news/
+media
+staticfiles/

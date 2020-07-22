@@ -22,10 +22,7 @@ class Tag(models.Model):
 class News(models.Model):
     title = models.CharField(max_length=192, unique=True)
     slug = models.SlugField(max_length=192, unique=True)
-    cover_photo = models.ImageField(upload_to='news', blank=True, null=True, height_field="avatar_height",
-                                    width_field="avatar_width", )
-    avatar_height = models.IntegerField(blank=True, null=True, default='628')
-    avatar_width = models.IntegerField(blank=True, null=True, default='1200')
+    cover_photo = models.ImageField(upload_to='news', blank=True, null=True)
     summary = models.CharField(max_length=280)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post_author')
     updated_on = models.DateTimeField(auto_now=True)
