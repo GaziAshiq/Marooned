@@ -154,7 +154,7 @@ STATICFILES_DIRS = (
 )
 
 LOGIN_REDIRECT_URL = 'island:home'
-LOGIN_URL = 'user:signin'
+LOGIN_URL = 'users:signin'
 
 # SUMMERNOTE
 X_FRAME_OPTIONS = 'SAMEORIGIN'
