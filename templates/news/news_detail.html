@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ post.title }} {{ block.super }}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 card mb-4  mt-4 left  top">
+                <div class="card-body">
+                    <h1 class="text-dark text-center">{{ post.title }}</h1>
+                    <hr>
+                    <h5 class="text-center">Summary: {{ post.summary }}</h5>
+                    <hr>
+                    <p class=" text-muted text-center">Author: {{ post.author }} | Published: {{ post.created_on }}
+                        {% if post.updated_on != post.created_on %}
+                            | Update on: {{ post.updated_on }}</p>
+                        {% endif %}
+                    <hr>
+                    {% if post.tags.all %}
+                        <p class="text-muted text-center">Tags:
+                            {% for tag in post.tags.all %} #{{ tag }} {% endfor %}</p>
+                        <hr>
+                    {% endif %}
+                    {% if post.cover_photo %}
+                        <img src="{{ post.cover_photo.url }}" class="img-fluid" alt="Responsive Cover image">
+                        <hr>
+                    {% endif %}
+                    <p class="card-text">{{ post.content | safe }}</p>
+                </div>
+                <div class="simple">
+                    {% if post.author == user %}
+                        <a href="{% url 'news:news-update' post.slug %}" class="btn btn-outline-warning">Update</a>
+                        <a href="{% url 'news:news-delete' post.slug %}" class="btn btn-outline-danger">Delete</a>
+                    {% endif %}
+                </div>
+
+            </div>
+            {% block sidebar %} {% include 'news/sidebar.html' %} {% endblock sidebar %}
+        </div>
+    </div>
+
+{% endblock %}

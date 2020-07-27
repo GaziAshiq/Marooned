@@ -28,7 +28,7 @@ class News(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    status = models.IntegerField(choices=STATUS, default=0)
+    status = models.IntegerField(choices=STATUS, default=1)
     tags = models.ManyToManyField(Tag, blank=True, related_name='post_tag')
 
     class Meta:
@@ -38,8 +38,7 @@ class News(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("post", kwargs={"slug": str(self.slug)})
-
+        return reverse("news:post", kwargs={"slug": str(self.slug)})
 
 # class Comment(models.Model):
 #     post = models.ForeignKey(News, on_delete=models.CASCADE, related_name='comments')

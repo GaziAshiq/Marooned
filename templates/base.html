@@ -41,8 +41,12 @@
             <ul class="navbar-nav">
                 {% if user.is_authenticated %}
                     <li class="nav-item active">
+                        <a class="nav-link text-primary" href="{% url 'news:news-create' %}">New Post</a>
+                    </li>
+                    <li class="nav-item active">
                         <a class="nav-link" href="{% url 'users:profile' %}">
-                            <button class="btn btn-sm btn-outline-warning text-sm-center" type="submit">{{ user.username}}</button>
+                            <button class="btn btn-sm btn-outline-warning text-sm-center"
+                                    type="submit">{{ user.username }}</button>
                         </a>
                     </li>
                     <li class="nav-item active">
@@ -58,7 +62,8 @@
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="{% url 'users:signup' %}">
-                            <button class="btn btn-sm btn-outline-success text-sm-center" type="submit">Get Started</button>
+                            <button class="btn btn-sm btn-outline-success text-sm-center" type="submit">Get Started
+                            </button>
                         </a>
                     </li>
                 {% endif %}
