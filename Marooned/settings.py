@@ -186,8 +186,8 @@ if os.getcwd() == '/app':
     # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'  # serve all files (media & static)
 
 # For Heroku
-# if os.getcwd() == '/app':
-#     DEBUG = False
+if os.getcwd() == '/app':
+    DEBUG = False
 
 # This xml code for amazon s3. save it here, so in future i can copy from here
 '''
