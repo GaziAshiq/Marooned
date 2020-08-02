@@ -12,10 +12,14 @@
                     <hr>
                     <h5 class="text-center">Summary: {{ post.summary }}</h5>
                     <hr>
-                    <p class=" text-muted text-center">Author: {{ post.author }} | Published: {{ post.created_on }}
-                        {% if post.updated_on != post.created_on %}
-                            | Update on: {{ post.updated_on }}</p>
+                    <div class="row">
+                        <a href="{% url 'news:user-posts' post.author.username %}"
+                           class="h6 col-4 text-center">{{ post.author }}</a>
+                        <p class="text-muted text-center col-4 h6">Published: {{ post.created_on }} </p>
+                        {% if post.updated_on > post.created_on %}
+                        <p class="text-muted text-center col-4 h6">Updated on: {{ post.updated_on }} </p>
                         {% endif %}
+                    </div>
                     <hr>
                     {% if post.tags.all %}
                         <p class="text-muted text-center">Tags:
@@ -26,7 +30,7 @@
                         <img src="{{ post.cover_photo.url }}" class="img-fluid" alt="Responsive Cover image">
                         <hr>
                     {% endif %}
-                    <p class="card-text">{{ post.content | safe }}</p>
+                    <p class="card-body embed-responsive">{{ post.content | safe }}</p>
                 </div>
                 <div class="simple">
                     {% if post.author == user %}

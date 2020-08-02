@@ -1,9 +1,11 @@
 from django.urls import path
-from .views import NewsListView, NewsDetailView, NewsCreateView, NewsUpdateView, NewsDeleteView, TagListView
+from .views import (NewsListView, NewsDetailView, NewsCreateView, NewsUpdateView, NewsDeleteView,
+                    UserPostListView, TagListView)
 
 app_name = 'news'
 urlpatterns = [
     path('', NewsListView.as_view(), name='news'),
+    path('author/<str:username>/', UserPostListView.as_view(), name='user-posts'),
     path('new/', NewsCreateView.as_view(), name='news-create'),
     path('tags/', TagListView.as_view(), name='tags'),
     path('<slug:slug>/', NewsDetailView.as_view(), name='post'),

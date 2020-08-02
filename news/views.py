@@ -1,14 +1,16 @@
 from .models import News, Tag
+from .forms import NewsPublishForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from .forms import NewsPublishForm
+from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404
 
 
 # Create your views here.
 class NewsListView(ListView):
     queryset = News.objects.filter(status=1).order_by('-created_on')
     context_object_name = 'news_list'
-    paginate_by = 2
+    paginate_by = 5
 
 
 class NewsDetailView(DetailView):
@@ -55,6 +57,17 @@ class NewsDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == post.author:
             return True
         return False
+
+
+class UserPostListView(ListView):
+    model = News
+    template_name = 'news/user_posts.html'
+    context_object_name = 'news_list'
+    paginate_by = 5
+
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return News.objects.filter(author=user).order_by('-created_on')
 
 
 class TagListView(ListView):

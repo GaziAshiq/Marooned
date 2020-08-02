@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block title %}
-    News Feed {{ block.super }}
+    User Feed {{ block.super }}
 {% endblock %}
 
 {% block body %}
@@ -20,6 +20,7 @@
         }
     </style>
     <div class="container">
+        <h1 class="mb-4">Author: {{ view.kwargs.username }}. And author have {{ page_obj.paginator.count }} Posts</h1>
         <div class="row">
             <!-- Blog Entries Column -->
             <div class="col-md-8 mt-4 left">
@@ -28,7 +29,7 @@
                         <div class="card-body">
                             {% if post.cover_photo %}
                                 <img width="200" height="200" src="{{ post.cover_photo.url }}" alt="Cover Photo"
-                                     class="img-fluid rounded float-right">
+                                     class="rounded float-right">
                             {% endif %}
                             <h2 class="card-title">{{ post.title }}</h2>
                             <div class="row">
