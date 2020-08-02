@@ -154,7 +154,15 @@ STATICFILES_DIRS = (
 )
 
 LOGIN_REDIRECT_URL = 'island:home'
-LOGIN_URL = 'users:signin'
+LOGIN_URL = 'signin'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'ashiqrahman013@gmail.com'
+EMAIL_HOST_PASSWORD = 'epyxiauwdauqoryt'
+DEFAULT_FROM_EMAIL = 'Marooned.herokuapp.com <noreply@marooned.com>'
 
 # SUMMERNOTE
 X_FRAME_OPTIONS = 'SAMEORIGIN'

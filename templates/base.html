@@ -44,24 +44,24 @@
                         <a class="nav-link text-primary" href="{% url 'news:news-create' %}">New Post</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'users:profile' %}">
+                        <a class="nav-link" href="{% url 'profile' %}">
                             <button class="btn btn-sm btn-outline-warning text-sm-center"
                                     type="submit">{{ user.username }}</button>
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'users:signout' %}">
+                        <a class="nav-link" href="{% url 'signout' %}">
                             <button class="btn btn-sm btn-outline-danger text-sm-center" type="submit">Sign Out</button>
                         </a>
                     </li>
                 {% else %}
                     <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'users:signin' %}">
+                        <a class="nav-link" href="{% url 'signin' %}">
                             <button class="btn btn-sm btn-outline-primary text-sm-center" type="submit">Sign In</button>
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'users:signup' %}">
+                        <a class="nav-link" href="{% url 'signup' %}">
                             <button class="btn btn-sm btn-outline-success text-sm-center" type="submit">Get Started
                             </button>
                         </a>
