@@ -3,7 +3,7 @@ from .forms import NewsPublishForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 
 
 # Create your views here.
@@ -74,3 +74,8 @@ class TagListView(ListView):
     queryset = Tag.objects.all()
     template_name = 'news/tags.html'
     context_object_name = 'tag_list'
+
+
+def tag_detail(request, slug):
+    tag = Tag.objects.get(tag_slug__iexact=slug)
+    return render(request, 'news/tag_detail.html', context={'tag': tag})

@@ -18,6 +18,9 @@ class Tag(models.Model):
     def __str__(self):
         return self.tag_name
 
+    def get_absolute_url(self):
+        return reverse("news:tag-detail", kwargs={"slug": str(self.tag_slug)})
+
 
 class News(models.Model):
     title = models.CharField(max_length=192, unique=True)

@@ -1,24 +1,21 @@
 {% extends 'base.html' %}
-{% block title %}Marooned{% endblock %}
-{% block head %}
-    <title>Home</title>
+
+{% block title %}
+    {{ tags.tag_name }} {{ block.super }}
 {% endblock %}
 
 {% block body %}
-    <h1 class="btn-danger">Home</h1>
-    <p>{{ home }}</p>
-
     <div class="container">
         <div class="row">
             <!-- Blog Entries Column -->
             <div class="col-md-8 mt-4 left">
-                {% for post in featured_post %}
+                <h1 class="mb-4 text-center">post with <span
+                        class="badge badge-info rounded"> {{ tag.tag_name }} </span> tag</h1>
+                {% for post in tag.post_tag.all %}
                     {% include 'news/baby_template/news_card.html' %}
                 {% endfor %}
             </div>
             {% block sidebar %} {% include 'news/baby_template/sidebar.html' %} {% endblock sidebar %}
         </div>
-        <a class="align-center btn btn-outline-primary" href="{% url 'news:news' %}">Read All News</a>
     </div>
-
 {% endblock %}

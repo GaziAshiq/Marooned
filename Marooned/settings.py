@@ -58,9 +58,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = True
-
 ROOT_URLCONF = 'Marooned.urls'
 
 TEMPLATES = [
@@ -199,6 +196,9 @@ if os.getcwd() == '/app':
 # For Heroku
 if os.getcwd() == '/app':
     DEBUG = False
+
+    # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    # SECURE_SSL_REDIRECT = True
 
 # This xml code for amazon s3. save it here, so in future i can copy from here
 '''
