@@ -168,7 +168,7 @@ DEFAULT_FROM_EMAIL = 'Marooned.herokuapp.com <noreply@marooned.com>'
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 SUMMERNOTE_THEME = 'bs4'
 SUMMERNOTE_CONFIG = {
-    'attachment_filesize_limit': 1024 * 1024,  # specify the file size
+    'attachment_filesize_limit': 2084 * 2084,  # specify the file size
 }
 
 # Crispy forms
