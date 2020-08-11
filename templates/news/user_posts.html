@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block title %}
-    User Feed {{ block.super }}
+    {{ view.kwargs.username | capfirst }} Feed {{ block.super }}
 {% endblock %}
 
 {% block body %}
