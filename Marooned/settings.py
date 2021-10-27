@@ -83,14 +83,19 @@ WSGI_APPLICATION = 'Marooned.wsgi.application'
 
 # Local Database
 DATABASES = {
+    # 'default': {
+    # for postgres
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'marooned_pg',
+    #     'USER': 'postgres',
+    #     'PASSWORD': '4556',
+    #     'HOST': 'localhost',
+    #     'PORT': '5432'
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'marooned_pg',
-        'USER': 'postgres',
-        'PASSWORD': '4556',
-        'HOST': 'localhost',
-        'PORT': '5432'
-    }
+        'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'sqlite3.db', }
+
 }
 
 # Database heroku AWS RDS

@@ -1,5 +1,5 @@
 asgiref==3.2.7
-astroid==2.2.5
+astroid==2.8.4
 boto3==1.14.20
 botocore==1.17.20
 certifi==2020.4.5.1
@@ -7,7 +7,7 @@ colorama==0.4.1
 dj-database-url==0.5.0
 Django==3.0.3
 django-crispy-forms==1.9.2
-django-heroku==0.3.1
+django-heroku==0.0.0
 django-storages==1.9.1
 django-summernote==0.8.11.6
 docutils==0.15.2
@@ -16,15 +16,13 @@ isort==4.3.21
 jmespath==0.10.0
 lazy-object-proxy==1.4.2
 mccabe==0.6.1
-Pillow==7.2.0
-psycopg2==2.8.5
+Pillow==8.4.0
 pylint==2.3.1
 python-dateutil==2.8.1
 pytz==2020.1
 s3transfer==0.3.3
 six==1.12.0
 sqlparse==0.3.1
-typed-ast==1.4.0
 urllib3==1.25.9
 whitenoise==5.1.0
 wincertstore==0.2
