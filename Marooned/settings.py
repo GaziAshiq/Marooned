@@ -199,7 +199,7 @@ AWS_DEFAULT_ACL = None
 
 if os.getcwd() == '/app':
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'  # only serve media files
-    # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'  # serve all files (media & static)
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'  # serve all files (media & static)
 
 # For Heroku
 if os.getcwd() == '/app':
