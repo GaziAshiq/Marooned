@@ -201,7 +201,7 @@ if os.getcwd() == '/app':
 
 # For Heroku
 if os.getcwd() == '/app':
-    DEBUG = False
+    DEBUG = True
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
