@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import django_heroku
 import dj_database_url
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -179,9 +180,6 @@ SUMMERNOTE_CONFIG = {
 # Crispy forms
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-# Activate Django-Heroku.
-django_heroku.settings(locals())
-
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 
@@ -199,11 +197,14 @@ AWS_DEFAULT_ACL = None
 
 if os.getcwd() == '/app':
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'  # only serve media files
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'  # serve all files (media & static)
+    # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'  # serve all files (media & static)
 
 # For Heroku
 if os.getcwd() == '/app':
     DEBUG = False
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
 
     # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     # SECURE_SSL_REDIRECT = True
